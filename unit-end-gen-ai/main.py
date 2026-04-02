@@ -17,6 +17,12 @@ model_map = {
         'quality': 'high',
         'tokens_maximum': 'high',
     },
+    'black-forest-labs/FLUX.1-schnell': {
+        'model': 'black-forest-labs/FLUX.1-schnell',
+        'use_remote': True,
+        'quality': 'high',
+        'tokens_maximum': 'high',
+    },
     'sd-legacy/stable-diffusion-v1-5': {
         'model': 'sd-legacy/stable-diffusion-v1-5',
         'quality': 'low',
@@ -52,7 +58,7 @@ def generate_poster(prompt):
     selected_model = model_map[model]
     
     if selected_model.get('use_remote'):
-        print('**** Using remote inference for model:', selected_model['model'], os.getenv("HUGGING_FACE_TOKEN"))
+        print('**** Using remote inference for model:', selected_model['model'])
         client = InferenceClient(
             model=selected_model['model'],
             api_key=HUGGING_FACE_TOKEN
